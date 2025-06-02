@@ -162,7 +162,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Send the message to a chatbot server.
         function sendMessageToChatbot(message) {
-            fetch('http://127.0.0.1:8081/chat', {
+            const BASE_URL = window.location.hostname === "localhost"
+            ? "http://127.0.0.1:8081"
+            : "https://baltha-studio.onrender.com";
+
+            fetch(`${BASE_URL}/chat`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
